@@ -1,4 +1,4 @@
-package com.company.leetcode.hard;
+package com.jonsaraco.leetcode.hard;
 
 /**
  * Runtime: 2 ms, faster than 99.88% of Java online submissions for Median of Two Sorted Arrays.

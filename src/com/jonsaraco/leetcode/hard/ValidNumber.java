@@ -1,4 +1,4 @@
-package com.company.leetcode.hard;
+package com.jonsaraco.leetcode.hard;
 
 /**
  * A valid number can be split up into these components (in order):

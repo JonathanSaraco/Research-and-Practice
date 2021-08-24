@@ -1,4 +1,4 @@
-package com.company.leetcode.easy;
+package com.jonsaraco.leetcode.easy;
 
 import java.util.Map;
 

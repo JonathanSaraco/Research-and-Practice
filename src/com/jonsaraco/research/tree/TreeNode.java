@@ -1,4 +1,4 @@
-package com.company.research.tree;
+package com.jonsaraco.research.tree;
 
 import java.util.HashMap;
 import java.util.Map;
