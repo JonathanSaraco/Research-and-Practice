@@ -25,8 +25,7 @@ public class SwimInRisingWater {
     public static DijkstraNode[][] dijkstraAlgorithm(int[][] grid) {
         DijkstraNode[][] dijkstraNodes = new DijkstraNode[grid.length][grid.length];
         DijkstraNode startNode = new DijkstraNode(grid[0][0]);
-        DijkstraNode endNode = new DijkstraNode(grid.length - 1, grid.length - 1);
-        dijkstraNodes[endNode.i][endNode.j] = endNode;
+        DijkstraNode endNode = addOrGetDijkstraNode(grid.length - 1, grid.length - 1, dijkstraNodes);
         dijkstraNodes[0][0] = startNode;
         PriorityQueue<DijkstraNode> nodeQueue = new PriorityQueue<>();
         nodeQueue.add(startNode);
@@ -36,12 +35,23 @@ public class SwimInRisingWater {
                 int weight = current.weight + Math.max(0, grid[successor.i][successor.j] - current.weight);
                 if (weight < successor.weight) {
                     successor.weight = weight;
+                    if (successor == endNode) {
+                        return dijkstraNodes;
+                    }
                     successor.previous = current;
                     nodeQueue.add(successor);
                 }
             }
         }
         return dijkstraNodes;
+    }
+
+    private static DijkstraNode addOrGetDijkstraNode(int i, int j, DijkstraNode[][] dijkstraNodes) {
+        if (dijkstraNodes[i][j] == null) {
+            DijkstraNode dijkstraNode = new DijkstraNode(i, j);
+            dijkstraNodes[i][j] = dijkstraNode;
+        }
+        return dijkstraNodes[i][j];
     }
 
     private static Set<DijkstraNode> successorsFromNode(DijkstraNode node, DijkstraNode[][] dijkstraNodes) {
@@ -53,10 +63,7 @@ public class SwimInRisingWater {
                     int newI = node.i + i;
                     int newJ = node.j + j;
                     try {
-                        if (dijkstraNodes[newI][newJ] == null) {
-                            dijkstraNodes[newI][newJ] = new DijkstraNode(newI, newJ);
-                        }
-                        successors.add(dijkstraNodes[newI][newJ]);
+                        successors.add(addOrGetDijkstraNode(newI, newJ, dijkstraNodes));
                     } catch (Exception ignore) {}
                 }
             }
