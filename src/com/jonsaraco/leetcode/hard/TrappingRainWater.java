@@ -2,6 +2,10 @@ package com.jonsaraco.leetcode.hard;
 
 import java.util.Arrays;
 
+/**
+ * Runtime: 1 ms, faster than 84.69% of Java online submissions for Trapping Rain Water.
+ * Memory Usage: 39 MB, less than 22.36% of Java online submissions for Trapping Rain Water.
+ */
 public class TrappingRainWater {
 
     public static void main(String[] args) {
