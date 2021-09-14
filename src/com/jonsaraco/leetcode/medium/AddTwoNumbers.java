@@ -57,7 +57,7 @@ public class AddTwoNumbers {
         return new ListNode(sum.val, sumDigits(carryOverNode, l1 == null ? null : l1.next, l2 == null ? null : l2.next));
     }
 
-    static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
