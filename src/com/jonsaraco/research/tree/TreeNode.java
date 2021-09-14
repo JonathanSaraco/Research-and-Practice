@@ -3,7 +3,7 @@ package com.jonsaraco.research.tree;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TreeNode {
+class TreeNode {
     private Map<Character, TreeNode> children = new HashMap<>();
     private boolean isEndOfWord = false;
 

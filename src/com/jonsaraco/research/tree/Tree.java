@@ -1,6 +1,6 @@
 package com.jonsaraco.research.tree;
 
-public class Tree {
+class Tree {
 
     private TreeNode root = new TreeNode();
 
