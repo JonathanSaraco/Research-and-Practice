@@ -13,9 +13,9 @@ public class SearchInRotatedSortedArray {
     }
 
     public static int search(int[] nums, int target) {
-        // Array is not rotated, just do normal BST
+        // Array is not rotated, just do normal binary search
         if (nums[0] < nums[nums.length - 1]) return binarySearch(nums, 0, nums.length - 1, target);
-        // Find rotation point and BST left or right side
+        // Find rotation point and binary search left or right side
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {
