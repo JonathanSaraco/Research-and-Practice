@@ -3,28 +3,50 @@ package com.jonsaraco.leetcode.medium;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Results:
- *
- * Runtime: 205 ms, faster than 6.87% of Java online submissions for Longest Substring Without Repeating Characters.
- * Memory Usage: 39.9 MB, less than 16.43% of Java online submissions for Longest Substring Without Repeating Characters.
- */
-
 public class LongestSubStringNoRepeats {
 
     public static void main(String[] args) {
         String string = "wobgrovw";
-        System.out.println(lengthOfLongestSubstring(string));
+        System.out.println(lengthOfLongestSubstringBad(string));
     }
 
-    public static int lengthOfLongestSubstring(String s) {
+    /**
+     * Runtime: 6 ms, faster than 71.16% of Java online submissions for Longest Substring Without Repeating Characters.
+     * Memory Usage: 39.4 MB, less than 62.33% of Java online submissions for Longest Substring Without Repeating Characters.
+     */
+    public static int lengthOfLongestSubstringSlidingWindow(String s) {
+        Set<Character> charsFound = new HashSet<>();
+        int max = 0;
+        int i = 0;
+        int j = 0;
+        while (i < s.length()) {
+            char ithChar = s.charAt(i);
+            char jthChar = s.charAt(j);
+            if (!charsFound.contains(ithChar)) {
+                charsFound.add(ithChar);
+                max = Math.max(max, i - j + 1);
+                i++;
+            } else {
+                charsFound.remove(jthChar);
+                j++;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Runtime: 205 ms, faster than 6.87% of Java online submissions for Longest Substring Without Repeating Characters.
+     * Memory Usage: 39.9 MB, less than 16.43% of Java online submissions for Longest Substring Without Repeating Characters.
+     */
+    public static int lengthOfLongestSubstringBad(String s) {
         if (s == null || s.isEmpty()) return 0;
         String longestSubString = "";
         String currentSubString = "";
         Set<String> charactersEncountered = new HashSet<>();
-        outerLoop: for (int i = 0; i < s.length();) {
+        outerLoop:
+        for (int i = 0; i < s.length(); ) {
             // Don't continue if we don't have enough characters left
-            currentSubString = currentSubString + String.valueOf(s.charAt(i));
+            currentSubString = currentSubString + s.charAt(i);
             charactersEncountered.add(String.valueOf(s.charAt(i)));
             if (longestSubString.isEmpty()) {
                 longestSubString = currentSubString;
