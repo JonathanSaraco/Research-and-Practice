@@ -3,6 +3,10 @@ package com.jonsaraco.leetcode.medium;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Runtime: 9 ms, faster than 100.00% of Java online submissions for Minimum Deletions to Make Character Frequencies Unique.
+ * Memory Usage: 39.6 MB, less than 81.13% of Java online submissions for Minimum Deletions to Make Character Frequencies Unique.
+ */
 public class MinimumDeletionsToMakeCharacterFrequenciesUnique {
     public static void main(String[] args) {
         String s = "aaabbbcc";
